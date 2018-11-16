@@ -1,0 +1,8 @@
+com/ivan/bauer/controllers/StudentDeleteController.class
+com/ivan/bauer/controllers/StudentRegistrationController.class
+com/ivan/bauer/beans/StudentRegistration.class
+com/ivan/bauer/server/main/SpringBootRest2Application.class
+com/ivan/bauer/beans/StudentRegistrationReply.class
+com/ivan/bauer/beans/Student.class
+com/ivan/bauer/controllers/StudentRetrieveController.class
+com/ivan/bauer/controllers/StudentUpdateController.class
