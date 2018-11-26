@@ -18,9 +18,9 @@ public class PostgreSQLController {
     @RequestMapping(method = RequestMethod.GET, value="/database/records")
 
     @ResponseBody
-    public ArrayList<String> getUniqueResults() {
+    public ArrayList<String> getStudents() {
 
-        String strSelect = "SELECT firstname, surname, age FROM postgres.records.customers";
+        String strSelect = "SELECT * FROM postgres.records.students";
         PostgreSQLdatabase conn = new PostgreSQLdatabase();
         Connection connection = conn.postgreSQLConnection();
 
@@ -29,13 +29,14 @@ public class PostgreSQLController {
         try {
             Statement stmt = connection.createStatement();
             ResultSet rset = stmt.executeQuery(strSelect);
-            
+
             int rowCount = 0;
             while(rset.next()) {   // Move the cursor to the next row, return false if no more row
-                String firstname = rset.getString("firstname");
-                String surname = rset.getString("surname");
-                int age = rset.getInt("age");
-                records.add(firstname + ", " + surname + ", " + age);
+                String student_id = rset.getString("student_id");
+                String name = rset.getString("name");
+                String fin = rset.getString("fin");
+                String age = rset.getString("age");
+                records.add(student_id + ", " + name + ", " + fin + ", " + age);
                 ++rowCount;
             }
 

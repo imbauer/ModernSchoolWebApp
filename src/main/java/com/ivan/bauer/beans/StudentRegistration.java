@@ -1,59 +1,32 @@
 package com.ivan.bauer.beans;
 
+import com.ivan.bauer.dao.PostgreSQLdatabase;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class StudentRegistration {
 
-    private List<Student> studentRecords;
-    private static StudentRegistration stdregd = null;
+    public static void register(String student_id, String name, String fin, String age) {
 
-    private StudentRegistration(){
-        studentRecords = new ArrayList<Student>();
-    }
+        Connection connection = PostgreSQLdatabase.postgreSQLConnection();
+        String SQLregistration = "INSERT INTO postgres.records.students (student_id, name, fin, age) VALUES ('"+student_id+"', '"+name+"', '"+fin+"', '"+age+"');";
+//                "VALUES ('001418765', 'Ivan', 'Bauer', 22);";
+        try {
+            Statement stmt = connection.createStatement();
+            stmt.executeUpdate(SQLregistration);
 
-    public static StudentRegistration getInstance() {
-        if(stdregd == null) {
-            stdregd = new StudentRegistration();
-            return stdregd;
 
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        else {
-            return stdregd;
-        }
-    }
 
-    public void add(Student std) {
-        studentRecords.add(std);
-    }
 
-    public String upDateStudent(Student std) {
-        for(int i=0; i<studentRecords.size(); i++)
-        {
-            Student stdn = studentRecords.get(i);
-            if(stdn.getRegistrationNumber().equals(std.getRegistrationNumber())) {
-                studentRecords.set(i, std);//update the new record
-                return "Update successful";
-            }
-        }
-        return "Update un-successful";
-    }
 
-    public String deleteStudent(String registrationNumber) {
-        for(int i=0; i<studentRecords.size(); i++)
-        {
-            Student stdn = studentRecords.get(i);
-            if(stdn.getRegistrationNumber().equals(registrationNumber)){
-                studentRecords.remove(i);//update the new record
-                return "Delete successful";
-            }
-
-        }
-        return "Delete un-successful";
-    }
-
-    public List<Student> getStudentRecords() {
-        return studentRecords;
     }
 
 }

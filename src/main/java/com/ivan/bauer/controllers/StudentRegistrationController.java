@@ -1,31 +1,19 @@
 package com.ivan.bauer.controllers;
 
-import java.util.List;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.ivan.bauer.beans.*;
 
 @Controller
 public class StudentRegistrationController {
 
-    @RequestMapping(method = RequestMethod.POST, value="/register/student")
+    @RequestMapping(method = RequestMethod.GET, value="/register/student/{student_id}/{name}/{fin}/{age}")
 
     @ResponseBody
-    public StudentRegistrationReply registerStudent(@RequestBody Student student) {
-        System.out.println("In registerStudent");
-        StudentRegistrationReply stdregreply = new StudentRegistrationReply();
-        StudentRegistration.getInstance().add(student);
-        //We are setting the below value just to reply a message back to the caller
-        stdregreply.setName(student.getName());
-        stdregreply.setAge(student.getAge());
-        stdregreply.setRegistrationNumber(student.getRegistrationNumber());
-        stdregreply.setRegistrationStatus("Successful");
-        return stdregreply;
+    public Boolean register(@PathVariable("student_id") String student_id, @PathVariable("name") String name, @PathVariable("fin") String fin, @PathVariable("age") String age) {
+        StudentRegistration.register(student_id, name, fin, age);
+        return true;
     }
 
 }
