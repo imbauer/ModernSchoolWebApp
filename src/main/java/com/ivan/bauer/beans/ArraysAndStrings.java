@@ -1,6 +1,10 @@
 package com.ivan.bauer.beans;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.Properties;
 
 public class ArraysAndStrings {
 
@@ -38,5 +42,32 @@ public class ArraysAndStrings {
         }
         return false;
     }
+
+
+    public static Connection connDatabase() {
+//        String url = "jdbc:postgresql://localhost/test";
+//        Properties props = new Properties();
+//        props.setProperty("user","user");
+//        props.setProperty("password","password");
+//        props.setProperty("ssl","false");
+//        try {
+//            Connection conn = DriverManager.getConnection(url, props);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        url = "jdbc:postgresql://mypostgres:5432/postgres";
+        String url = "jdbc:postgresql://mypostgres/postgres?user=user&password=password";
+        try {
+            Connection conn = DriverManager.getConnection(url);
+//            return conn;
+            return conn;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+//        return data;
+        return null;
+    }
+
+
 
 }

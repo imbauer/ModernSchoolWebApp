@@ -1,0 +1,26 @@
+version: "2"
+services:
+  app:
+#    build: .
+    image: app:now   #IF YOU ARE TAGGING IMAGES AND REPEATEDLY USING THE SAME ONE THEN UNCOMMENT AND COMMENT ABOVE
+    ports:
+      - "8083:8083"
+    depends_on:
+      - mypostgres
+  mypostgres:
+    image: postgres:9.6-alpine
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: 'user'
+      POSTGRES_PASSWORD: 'password'
+      POSTGRES_DB: 'postgres'
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d/
+
+# docker-compose -f docker-compose.yml up
+# docker-compose up
+# export COMPOSE_CONVERT_WINDOWS_PATHS=1
+# Database Server: 192.168.99.100
+# Database Port: 5432
+# DbVisualizer
