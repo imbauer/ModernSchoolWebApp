@@ -14,7 +14,8 @@
  *  according to their section number.
  *
  ******************************************************************************/
-
+// Foreign key student id: holds all of their current courses, completed courses
+// Inheritance for person, having profs, undergrads faculty
 
 public class Student {
     private String first;     // first name
