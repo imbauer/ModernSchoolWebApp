@@ -8,7 +8,15 @@
 *.ctxt
 
 # Mobile Tools for Java (J2ME)
-.idea/
+*.iml
+.idea
+target
+*.class
+*.jar
+*.pyc
+.classpath
+.project
+.settings/
 
 # Package Files #
 *.jar
