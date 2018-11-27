@@ -11,9 +11,10 @@ public class StudentRegistrationController {
     @RequestMapping(method = RequestMethod.GET, value="/register/student/{student_id}/{name}/{fin}/{age}")
 
     @ResponseBody
-    public Boolean register(@PathVariable("student_id") String student_id, @PathVariable("name") String name, @PathVariable("fin") String fin, @PathVariable("age") String age) {
-        StudentRegistration.register(student_id, name, fin, age);
-        return true;
+    public Student register(@PathVariable("student_id") String student_id, @PathVariable("name") String name, @PathVariable("fin") String fin, @PathVariable("age") String age) {
+        Student student = new Student(student_id, name, fin, age);
+        StudentRegistration.register(student);
+        return student;
     }
 
 }

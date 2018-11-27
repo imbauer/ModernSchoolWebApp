@@ -14,32 +14,45 @@
  *  according to their section number.
  *
  ******************************************************************************/
+
+package com.ivan.bauer.beans;
+
 // Foreign key student id: holds all of their current courses, completed courses
 // Inheritance for person, having profs, undergrads faculty
 
 public class Student {
-    private String first;     // first name
-    private String last;      // last name
-    private String email;     // email address
-    private int section;      // section number
+    private String student_id;     // first name
+    private String name;      // last name
+    private String fin;     // email address
+    private String age;      // section number
 
     // construct a new student with given fields
-    public Student(String first, String last, String email, int section) {
-        this.first   = first;
-        this.last    = last;
-        this.email   = email;
-        this.section = section;
+    public Student(String student_id, String name, String fin, String age) {
+        this.student_id   = student_id;
+        this.name    = name;
+        this.fin   = fin;
+        this.age = age;
     }
 
-    // return true if the invoking object's section is less than that of b
-    public boolean less(Student b) {
-        Student a = this;
-        return a.section < b.section;
+    public String getStudent_id() {
+        return student_id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getFin() {
+        return fin;
+    }
+
+    public String getAge() {
+        return age;
     }
 
     // return a string representation of the invoking object
     public String toString() {
-        return section + " " + first + " " + last + " " + email;
+        return student_id + " " + name + " " + fin + " " + age;
     }
 }
 

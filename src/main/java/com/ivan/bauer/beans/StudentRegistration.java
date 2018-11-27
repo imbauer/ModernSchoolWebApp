@@ -11,10 +11,13 @@ import java.util.List;
 
 public class StudentRegistration {
 
-    public static void register(String student_id, String name, String fin, String age) {
 
-        Connection connection = PostgreSQLdatabase.postgreSQLConnection();
-        String SQLregistration = "INSERT INTO postgres.records.students (student_id, name, fin, age) VALUES ('"+student_id+"', '"+name+"', '"+fin+"', '"+age+"');";
+    static PostgreSQLdatabase conn = new PostgreSQLdatabase();
+    static Connection connection = conn.postgreSQLConnection();
+
+    public static void register(Student student) {
+
+        String SQLregistration = "INSERT INTO postgres.records.students (student_id, name, fin, age) VALUES ('"+student.getStudent_id()+"', '"+student.getName()+"', '"+student.getFin()+"', '"+student.getAge()+"');";
 //                "VALUES ('001418765', 'Ivan', 'Bauer', 22);";
         try {
             Statement stmt = connection.createStatement();
