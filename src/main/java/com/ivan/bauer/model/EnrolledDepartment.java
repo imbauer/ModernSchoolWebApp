@@ -1,4 +1,4 @@
-package com.ivan.bauer.beans;
+package com.ivan.bauer.model;
 
 public class EnrolledDepartment {
 

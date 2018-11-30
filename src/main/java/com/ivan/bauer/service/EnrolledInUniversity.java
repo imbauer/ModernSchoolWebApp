@@ -1,10 +1,7 @@
-package com.ivan.bauer.controllers;
-
-import com.ivan.bauer.beans.Student;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.web.bind.annotation.*;
+package com.ivan.bauer.service;
 
 import com.ivan.bauer.dao.PostgreSQLdatabase;
+import com.ivan.bauer.model.Student;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,18 +9,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-@RestController
-@EnableAutoConfiguration
-public class PostgreSQLController {
+public class EnrolledInUniversity {
 
-    @RequestMapping(method = RequestMethod.GET, value="/database/records")
+    static PostgreSQLdatabase conn = new PostgreSQLdatabase();
+    static Connection connection = conn.postgreSQLConnection();
 
-    @ResponseBody
     public ArrayList<Student> getStudents() {
 
         String strSelect = "SELECT * FROM postgres.records.students";
-        PostgreSQLdatabase conn = new PostgreSQLdatabase();
-        Connection connection = conn.postgreSQLConnection();
 
         ArrayList<Student> students = new ArrayList<>();
 
@@ -51,5 +44,3 @@ public class PostgreSQLController {
     }
 
 }
-
-

@@ -15,7 +15,7 @@
  *
  ******************************************************************************/
 
-package com.ivan.bauer.beans;
+package com.ivan.bauer.model;
 
 // Foreign key student id: holds all of their current courses, completed courses
 // Inheritance for person, having profs, undergrads faculty

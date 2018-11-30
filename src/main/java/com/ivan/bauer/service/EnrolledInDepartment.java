@@ -1,9 +1,8 @@
-package com.ivan.bauer.controllers;
+package com.ivan.bauer.service;
 
-import com.ivan.bauer.beans.EnrolledDepartment;
 import com.ivan.bauer.dao.PostgreSQLdatabase;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.web.bind.annotation.*;
+import com.ivan.bauer.model.EnrolledDepartment;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,18 +10,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-@RestController
-@EnableAutoConfiguration
 public class EnrolledInDepartment {
 
-    @RequestMapping(method = RequestMethod.GET, value="/check/enrolled/{dept_no}")
+    static PostgreSQLdatabase conn = new PostgreSQLdatabase();
+    static Connection connection = conn.postgreSQLConnection();
 
-    @ResponseBody
-    public ArrayList<EnrolledDepartment> listEnrolled(@PathVariable("dept_no") String dept_no) {
+    public static ArrayList<EnrolledDepartment> listEnrolled(@PathVariable("dept_no") String dept_no) {
 
         String strSelect = "SELECT * FROM postgres.records.department_enrollment where dept_no = " + "'" + dept_no + "'";
-        PostgreSQLdatabase conn = new PostgreSQLdatabase();
-        Connection connection = conn.postgreSQLConnection();
 
         ArrayList<EnrolledDepartment> enrolled = new ArrayList<>();
 

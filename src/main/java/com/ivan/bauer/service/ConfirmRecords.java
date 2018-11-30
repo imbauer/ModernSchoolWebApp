@@ -1,12 +1,13 @@
-package com.ivan.bauer.beans;
+package com.ivan.bauer.service;
 
+import com.ivan.bauer.model.Department;
+import com.ivan.bauer.model.Student;
 import com.ivan.bauer.dao.PostgreSQLdatabase;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 public class ConfirmRecords {
 
@@ -20,9 +21,7 @@ public class ConfirmRecords {
         try {
             Statement stmt = connection.createStatement();
             ResultSet rset = stmt.executeQuery(strSelect);
-
             while(rset.next()) {   // Move the cursor to the next row, return false if no more row
-
                 Student student = new Student(
                         rset.getString("student_id"),
                         rset.getString("name"),
@@ -31,24 +30,18 @@ public class ConfirmRecords {
                 );
                 return student;
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
-
         return null;
-
     }
 
     public static Department confirmDepartment(String dept_no) {
-
         String strSelect = "SELECT * FROM postgres.records.departments where dept_no = " + "'" + dept_no + "'";
-
         try {
             Statement stmt = connection.createStatement();
             ResultSet rset = stmt.executeQuery(strSelect);
-
             while(rset.next()) {   // Move the cursor to the next row, return false if no more row
                 Department department = new Department(
                         rset.getString("dept_no"),
@@ -56,16 +49,11 @@ public class ConfirmRecords {
                 );
                 return department;
             }
-
-
-
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
-
         return null;
-
     }
 
 }

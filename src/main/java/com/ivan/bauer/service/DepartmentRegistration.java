@@ -1,12 +1,14 @@
-package com.ivan.bauer.beans;
+package com.ivan.bauer.service;
 
+import com.ivan.bauer.model.Department;
+import com.ivan.bauer.model.Student;
 import com.ivan.bauer.dao.PostgreSQLdatabase;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DepartmentEnrollment {
+public class DepartmentRegistration {
 
     static PostgreSQLdatabase conn = new PostgreSQLdatabase();
     static Connection connection = conn.postgreSQLConnection();
@@ -21,7 +23,6 @@ public class DepartmentEnrollment {
         SQLException e) {
             e.printStackTrace();
         }
-
     }
 
 }
