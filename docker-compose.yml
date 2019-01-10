@@ -1,8 +1,8 @@
 version: "2"
 services:
   app:
-#    build: .
-    image: app:now   #IF YOU ARE TAGGING IMAGES AND REPEATEDLY USING THE SAME ONE THEN UNCOMMENT AND COMMENT ABOVE
+    build: .
+#    image: app:now   #IF YOU ARE TAGGING IMAGES AND REPEATEDLY USING THE SAME ONE THEN UNCOMMENT AND COMMENT ABOVE
     ports:
       - "8083:8083"
     depends_on:

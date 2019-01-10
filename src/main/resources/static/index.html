@@ -6,11 +6,54 @@
 <body>
 <div id='root'></div>
 <div id='rooter'></div>
-<div id="container">
-    <!-- This element's contents will be replaced with your component. -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6" style = "background-color:#F1EDED; text-align: center;font-family: 'Corben';">Hello</div>
+        <div class="col-sm-6" style = "background-color:#F1EDED; text-align: center;font-family: 'Corben';">World</div>
+    </div>
+    <div class="row">
+        <div class="col-md-4" style = "text-align: center;font-family: 'Nobile';">Spring</div>
+        <div class="col-md-4" style = "text-align: center;font-family: 'Nobile';">PostgreSQL</div>
+        <div class="col-md-4" style = "text-align: center;font-family: 'Nobile';">Docker</div>
+    </div>
+    <div class="row"style="font-family: 'Nobile';">
+        <div id="containdb">
+            <!-- This element's contents will be replaced with your component. -->
+        </div>
+    </div>
+
+    <div class="row" style = "border:3px solid black;border-radius: 10px;">
+        <div class="col-sm-4">
+            One of three columns
+        </div>
+        <div class="col-sm-4" style = "border:1px solid black;border-radius: 20px;">
+            One of three columns
+        </div>
+        <div class="col-sm-4" id="cont" style = "background-color:red;">
+            <img style='height: 100%; width: 100%; object-fit: contain' src="images/McMaster.jpg" alt="" />
+        </div>
+    </div>
+
+
+    <div class="row" style = "border:1px solid black;border-radius: 10px;text-align: center;">
+        <div class="col-md-6">
+            <a href="LoginPage.html" class="btn btn-default">Login</a>
+        </div>
+        <div class="col-md-6" style = "text-align: center;">
+            <a href="Enroll.html" class="btn btn-default">Enroll</a>
+        </div>
+    </div>
+
+
 </div>
 
+
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<link href="http://fonts.googleapis.com/css?family=Corben:bold" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Nobile:bold" rel="stylesheet" type="text/css">
 
 <script src="https://fb.me/react-15.0.1.js"></script>
 <script src="https://fb.me/react-dom-15.0.1.js"></script>
@@ -48,15 +91,6 @@
         </div>);
       }
     });
-    var EMPLOYEES = [
-      {name: 'Joe Biden', age: 45, years: 5},
-      {name: 'President Obama', age: 54, years: 8},
-      {name: 'Crystal Mac', age: 34, years: 12},
-      {name: 'James Henry', age: 33, years: 2}
-    ];
-
-
-
 
 
     class ItemLister extends React.Component {
@@ -71,11 +105,13 @@
       }
       render() {
         return(
-        <div style={{ backgroundColor: "#44014C", width: "300px", minHeight: "200px"}}>
+        <div style={{ backgroundColor: "#F1EDED", width: "600px", minHeight: "200px"}}>
             <ul>
                 {this.state.items.length ?
-                  this.state.items.map(item=><li key={item.student_id}>{item.student_id}{item.name}{item.fin}{item.age}</li>)
-                  : <li>Loading...</li>
+                  this.state.items.map(item=><li style={{ listStyleType: "lower-greek", border: "1px solid #000", margin: "2em", width: "10em",
+                   padding: "5px" }}>{item.student_id} | {item.name} {item.fin} ---> {item.age}</li>)
+                  : <li style={{ listStyleType: "lower-greek", border: "1px solid #000", margin: "2em",
+                   padding: "5px" }}>Loading...</li>
                 }
             </ul>
         </div>
@@ -85,7 +121,7 @@
 
     ReactDOM.render(
       <ItemLister />,
-      document.getElementById('container')
+      document.getElementById('containdb')
     );
 
 
