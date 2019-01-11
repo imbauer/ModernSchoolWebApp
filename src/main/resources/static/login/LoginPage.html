@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Javascript + Spring</title>
+</head>
+<body>
+<style>
+    .vertical-center {
+      min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+      min-height: 100vh; /* These two lines are counted as one 🙂       */
+      display: flex;
+      align-items: center;
+
+    }
+    html, body{
+        height:100%; /* important to vertically align the container */
+        margin:0;
+        padding:0;
+    }
+    .button1{
+      background:#1AAB8A;
+      color:#fff;
+      border:none;
+      position:relative;
+      height:60px;
+      font-size:2em;
+      padding:0 2em;
+      padding:0.5em 2em 0.5em 2em;
+      cursor:pointer;
+      transition:800ms ease all;
+      outline:none;
+    }
+    .button1:hover{
+      background:#fff;
+      color:#1AAB8A;
+    }
+    .button1:before,.button1:after{
+      content:'';
+      position:absolute;
+      top:0;
+      right:0;
+      height:2px;
+      width:0;
+      background: #1AAB8A;
+      transition:400ms ease all;
+    }
+    .button1:after{
+      right:inherit;
+      top:inherit;
+      left:0;
+      bottom:0;
+    }
+    .button1:hover:before,.button1:hover:after{
+      width:100%;
+      transition:800ms ease all;
+    }
+</style>
+
+<div class="vertical-center">
+    <div class="container">
+        <div class="row" style="padding:30px;border:3px solid black;border-radius: 10px;display:flex;align-items:center;">
+
+            <div class="col-sm-4">
+            </div>
+
+            <div class="col-sm-4 text-center" style="">
+                <div class="input-field">
+                    <input class="validate" type="text" id="uname" name="uname" required>
+                    <label for="uname">Username</label>
+                </div>
+                <p></p>
+                <div class="input-field">
+                    <input class="validate" type="password" id="psw" name="psw" required>
+                    <label for="uname">Password</label>
+                </div>
+            </div>
+
+            <div class="col-sm-4" id="cont" style="">
+                <img style='height: 100%; width: 100%; object-fit: contain' src="images/McMaster.jpg" alt=""/>
+            </div>
+
+        </div>
+
+        <div class="row" style="display:flex;align-items:center;height:300px;border:1px solid black;border-radius: 20px;">
+
+            <div class="col-sm-4">
+            </div>
+
+            <div class="col-sm-4 text-center">
+                <a onclick="userAction()" class="button1" style="text-decoration:none;">Login</a>
+            </div>
+
+            <div class="col-sm-4" id="cont" style="">
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+    <script>
+
+var userAction = async () => {
+
+  var uname = document.getElementById("uname").value;
+  var psw = document.getElementById("psw").value;
+  console.log(uname);
+  console.log(psw);
+
+  var response = await fetch("/login/" + uname + "/" + psw + "");
+
+  // Add error handling for unfound logins
+  var myJson = await response.json(); //extract JSON from the http response
+
+  console.log(myJson);
+
+  if (myJson.student_id) {
+    location.href = "../home/HomePage.html";
+  }
+  else if (myJson.timestamp) {
+    console.log(false);
+  }
+}
+
+
+    </script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link href="http://fonts.googleapis.com/css?family=Corben:bold" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Nobile:bold" rel="stylesheet" type="text/css">
+
+    <script src="https://fb.me/react-15.0.1.js"></script>
+    <script src="https://fb.me/react-dom-15.0.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+
+</html>
