@@ -101,27 +101,27 @@
 
     <script>
 
-var userAction = async () => {
+        var userAction = async () => {
 
-  var uname = document.getElementById("uname").value;
-  var psw = document.getElementById("psw").value;
-  console.log(uname);
-  console.log(psw);
+          var uname = document.getElementById("uname").value;
+          var psw = document.getElementById("psw").value;
+          console.log(uname);
+          console.log(psw);
 
-  var response = await fetch("/login/" + uname + "/" + psw + "");
+          var response = await fetch("/login/" + uname + "/" + psw + "");
 
-  // Add error handling for unfound logins
-  var myJson = await response.json(); //extract JSON from the http response
+          // Add error handling for unfound logins
+          var myJson = await response.json(); //extract JSON from the http response
 
-  console.log(myJson);
+          console.log(myJson);
 
-  if (myJson.student_id) {
-    location.href = "../home/HomePage.html";
-  }
-  else if (myJson.timestamp) {
-    console.log(false);
-  }
-}
+          if (myJson.student_id) {
+            location.href = "../home/HomePage.html";
+          }
+          else if (myJson.timestamp) {
+            console.log(false);
+          }
+        }
 
 
     </script>
