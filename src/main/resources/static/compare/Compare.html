@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Javascript + Spring</title>
+</head>
+<body>
+<style>
+    .vertical-center {
+      min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+      min-height: 100vh; /* These two lines are counted as one 🙂       */
+      display: flex;
+      align-items: center;
+
+    }
+    html, body{
+        height:100%; /* important to vertically align the container */
+        margin:0;
+        padding:0;
+    }
+    .container-full {
+      margin: 0 auto;
+      width: 100%;
+    }
+    .button1{
+      background:#1AAB8A;
+      color:#fff;
+      border:none;
+      position:relative;
+      height:60px;
+      font-size:2em;
+      padding:0 2em;
+      padding:0.5em 2em 0.5em 2em;
+      cursor:pointer;
+      transition:800ms ease all;
+      outline:none;
+    }
+    .button1:hover{
+      background:#fff;
+      color:#1AAB8A;
+    }
+    .button1:before,.button1:after{
+      content:'';
+      position:absolute;
+      top:0;
+      right:0;
+      height:2px;
+      width:0;
+      background: #1AAB8A;
+      transition:400ms ease all;
+    }
+    .button1:after{
+      right:inherit;
+      top:inherit;
+      left:0;
+      bottom:0;
+    }
+    .button1:hover:before,.button1:hover:after{
+      width:100%;
+      transition:800ms ease all;
+    }
+</style>
+
+<!--<div class="vertical-center">-->
+<div class="container-full">
+
+
+    <div class="row" style="margin:0px !important; display:flex;align-items:center;min-height:33%;min-height:33vh;border:1px solid black;border-radius: 20px;">
+
+        <button onclick="window.location.href='page2'" class="col-sm-4 button1" style="background:#F8F9FB;border:1px solid black;border-radius: 20px;text-align:center;background-image: url('../images/jenkins.png');min-height:33.3%;min-height:33.3vh;background-size:contain;background-repeat:no-repeat;background-position:center;">
+            <b>Compare</b>
+        </button>
+
+
+        <div class="col-sm-4 text-center" style="border:1px solid black;border-radius: 20px;text-align:center;">
+            <a onclick="allStudents()" class="button1" style="text-decoration:none;">Login</a>
+        </div>
+
+        <div class="col-sm-4"  style="border:1px solid black;border-radius: 20px;text-align:center;min-height:33%;min-height:33vh;">
+
+        </div>
+
+    </div>
+
+    <div id = "boldStuff">&nbsp;</div>
+
+
+</div>
+
+
+    <script>
+
+        var allStudents = async () => {
+            var response = await fetch("/university/records");
+
+            var myJson = await response.json(); //extract JSON from the http response
+
+            console.log(myJson);
+            document.getElementById('boldStuff').innerHTML = '<p>' + myJson[0] + '</p>';
+            var htmlString = '<table class="table table-dark"><thead>    <tr>      <th scope="col">#</th>      <th scope="col">Student ID</th>      <th scope="col">First</th>      <th scope="col">Last</th>  <th scope="col">Age</th>  </tr>  </thead>  <tbody>';
+            for (var i = 0; i < myJson.length; i++) {
+                htmlString = htmlString + '<tr><th scope="row">' + (i+1) + '</th><td>' + myJson[i].student_id +'</td><td>' + myJson[i].name + '</td><td>' + myJson[i].fin + '</td><td>' + myJson[i].age + '</td></tr>'
+            }
+            htmlString = htmlString + '</tbody></table>';
+            console.log(htmlString);
+            document.getElementById('boldStuff').innerHTML = htmlString;
+        }
+
+
+    </script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+
+<link href="http://fonts.googleapis.com/css?family=Corben:bold" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Nobile:bold" rel="stylesheet" type="text/css">
+
+<script src="https://fb.me/react-15.0.1.js"></script>
+<script src="https://fb.me/react-dom-15.0.1.js"></script>
+
+
+
+</body>
+
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<!-- Compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+
+</html>
