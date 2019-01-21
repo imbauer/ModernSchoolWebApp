@@ -43,4 +43,44 @@ public class EnrolledInUniversity {
         return null;
     }
 
+
+
+    public static ArrayList<Student> getStudentsDept(String dept) {
+
+        String strSelect = "SELECT students.student_id, students.name, students.fin, students.age " +
+                "FROM postgres.records.students students " +
+                "JOIN postgres.records.department_enrollment department_enrollment " +
+                "ON students.student_id = department_enrollment.student_id " +
+                "JOIN postgres.records.departments departments " +
+                "ON departments.dept_no = department_enrollment.dept_no " +
+                "WHERE departments.dept_name = " + "'" + dept + "'";
+
+        ArrayList<Student> students = new ArrayList<>();
+
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet rset = stmt.executeQuery(strSelect);
+
+            while(rset.next()) {   // Move the cursor to the next row, return false if no more row
+                Student student = new Student(
+                        rset.getString("student_id"),
+                        rset.getString("name"),
+                        rset.getString("fin"),
+                        rset.getString("age")
+                );
+                students.add(student);
+            }
+
+            return students;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+
+
+
 }

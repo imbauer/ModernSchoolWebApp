@@ -52,7 +52,7 @@ INSERT INTO students (student_id, name, fin, age) VALUES ('152364753', 'Penelope
 INSERT INTO students (student_id, name, fin, age) VALUES ('123647585', 'Patrick', 'Phillips', '19');
 INSERT INTO students (student_id, name, fin, age) VALUES ('765843573', 'Lily', 'Stewart', '18');
 INSERT INTO students (student_id, name, fin, age) VALUES ('864535647', 'Max', 'Baker', '18');
-INSERT INTO students (student_id, name, fin, age) VALUES ('243785674', 'Ryan', 'Ferguson', '');
+INSERT INTO students (student_id, name, fin, age) VALUES ('243785674', 'Ryan', 'Ferguson', '20');
 INSERT INTO students (student_id, name, fin, age) VALUES ('243758654', 'Carl', 'Martin', '21');
 INSERT INTO students (student_id, name, fin, age) VALUES ('768574637', 'Lyndon', 'Hall', '22');
 INSERT INTO students (student_id, name, fin, age) VALUES ('435865435', 'Antony', 'Cunningham', '23');
@@ -62,10 +62,42 @@ INSERT INTO students (student_id, name, fin, age) VALUES ('236784326', 'Tony', '
 
 
 INSERT INTO departments (dept_no, dept_name) VALUES ('101', 'Software Engineering');
-INSERT INTO departments (dept_no, dept_name) VALUES ('20', 'Mathematics');
-INSERT INTO departments (dept_no, dept_name) VALUES ('45', 'Sport Science');
-INSERT INTO departments (dept_no, dept_name) VALUES ('102', 'Mechanical Engineering');
+INSERT INTO departments (dept_no, dept_name) VALUES ('121', 'Computer Science');
+INSERT INTO departments (dept_no, dept_name) VALUES ('45', 'Business');
+INSERT INTO departments (dept_no, dept_name) VALUES ('30', 'Kinesiology');
+INSERT INTO departments (dept_no, dept_name) VALUES ('55', 'Philosophy');
 
 INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('45', '001420596', 'September 2010');
-INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('20', '001415473', 'September 2012');
-INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('102', '001413956', 'September 2014');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('30', '001415473', 'September 2012');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('45', '001413956', 'September 2014');
+
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('101', '743940289', 'September 2011');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('101', '173628475', 'September 2009');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('101', '019474638', 'September 2010');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('101', '373628940', 'September 2010');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('101', '235254264', 'September 2010');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('101', '765854333', 'September 2010');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('101', '745654637', 'September 2010');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('101', '253456477', 'September 2010');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('101', '985746375', 'September 2010');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('101', '465685684', 'September 2008');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('101', '347854378', 'September 2013');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('101', '156782562', 'September 2014');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('121', '684367532', 'September 2012');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('121', '127745625', 'September 2011');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('121', '243726432', 'September 2014');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('121', '167321564', 'September 2013');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('121', '123625673', 'September 2010');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('45', '135647815', 'September 2010');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('45', '126437354', 'September 2010');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('45', '156754326', 'September 2011');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('45', '152364753', 'September 2010');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('45', '123647585', 'September 2009');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('45', '765843573', 'September 2010');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('45', '864535647', 'September 2010');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('30', '243785674', 'September 2012');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('30', '243758654', 'September 2010');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('30', '768574637', 'September 2013');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('30', '435865435', 'September 2010');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('55', '236473263', 'September 2010');
+INSERT INTO department_enrollment (dept_no, student_id, from_date) VALUES ('55', '236784326', 'September 2010');

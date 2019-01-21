@@ -13,7 +13,6 @@ import java.util.ArrayList;
 public class EnrolledInUniversityController {
 
     @RequestMapping(method = RequestMethod.GET, value="/university/records")
-
     @ResponseBody
     public ArrayList<Student> getStudents() {
 
@@ -21,5 +20,15 @@ public class EnrolledInUniversityController {
         return enrolled.getStudents();
 
     }
+
+    @RequestMapping(method = RequestMethod.GET, value="/university/records/{dept}")
+    @ResponseBody
+    public ArrayList<Student> getStudentsDept(@PathVariable("dept") String dept) {
+
+        EnrolledInUniversity enrolled = new EnrolledInUniversity();
+        return enrolled.getStudentsDept(dept);
+
+    }
+
 
 }

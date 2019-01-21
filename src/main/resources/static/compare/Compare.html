@@ -76,13 +76,22 @@
         </div>
 
         <div class="col-sm-4"  style="border:1px solid black;border-radius: 20px;text-align:center;min-height:33%;min-height:33vh;">
-
+            <select class="form-control" id="departmentID">
+                <option value="">Department</option>
+                <option value="Software Engineering">Software Engineering</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Business">Business</option>
+                <option value="Kinesiology">Kinesiology</option>
+                <option value="Philosophy">Philosophy</option>
+            </select>
         </div>
 
     </div>
 
     <div id = "boldStuff">&nbsp;</div>
+    <div>
 
+    </div>
 
 </div>
 
@@ -90,8 +99,13 @@
     <script>
 
         var allStudents = async () => {
-            var response = await fetch("/university/records");
 
+            if (document.getElementById("departmentID").value === "") {
+                var response = await fetch("/university/records");
+            }
+            else {
+                var response = await fetch("/university/records/" + document.getElementById("departmentID").value);
+            }
             var myJson = await response.json(); //extract JSON from the http response
 
             console.log(myJson);
@@ -135,8 +149,6 @@
 <!-- Bootstrap core JavaScript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<!-- Compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
