@@ -64,18 +64,22 @@
 <div class="container-full">
 
 
-    <div class="row" style="margin:0px !important; display:flex;align-items:center;min-height:33%;min-height:33vh;border:1px solid black;border-radius: 20px;">
+    <div class="row" style="margin:0px !important; display:flex;align-items:center;min-height:20%;min-height:20vh;border:1px solid black;border-radius: 2px;">
 
-        <button onclick="window.location.href='page2'" class="col-sm-4 button1" style="background:#F8F9FB;border:1px solid black;border-radius: 20px;text-align:center;background-image: url('../images/jenkins.png');min-height:33.3%;min-height:33.3vh;background-size:contain;background-repeat:no-repeat;background-position:center;">
-            <b>Compare</b>
+        <button onclick="window.location.href='../home/HomePage.html'" class="col-sm-2 button1" style="background:#F8F9FB;border:1px solid black;border-radius: 2px;text-align:center;background-image: url('../images/home.png');min-height:20%;min-height:20vh;background-size:contain;background-repeat:no-repeat;background-position:center;">
+            <b>Home</b>
         </button>
 
-
-        <div class="col-sm-4 text-center" style="border:1px solid black;border-radius: 20px;text-align:center;">
-            <a onclick="allStudents()" class="button1" style="text-decoration:none;">Login</a>
+        <div class="col-sm-2 text-center" style="border:1px solid black;border-radius: 2px;min-height:20%;min-height:20vh;display:flex;justify-content: center;align-items: center;">
+            <p>Compare yourself to your peers with this tool provided by the University</p>
         </div>
 
-        <div class="col-sm-4"  style="border:1px solid black;border-radius: 20px;text-align:center;min-height:33%;min-height:33vh;">
+
+        <div class="col-sm-4 text-center" style="text-align:center;">
+            <a onclick="allStudents()" class="button1" style="text-decoration:none;">Enter</a>
+        </div>
+
+        <div class="col-sm-4"  style="border:1px solid black;border-radius: 2px;text-align:center;min-height:20%;min-height:20vh;">
             <select class="form-control" id="departmentID">
                 <option value="">All Department</option>
                 <option value="Software Engineering">Software Engineering</option>
