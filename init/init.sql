@@ -25,6 +25,13 @@ CREATE TABLE department_enrollment (
     PRIMARY KEY (student_id, dept_no)
 );
 
+CREATE TABLE grades (
+    gpa varchar(50) NOT NULL,
+    student_id varchar(50) NOT NULL,
+    FOREIGN KEY (student_id) REFERENCES students (student_id) ON DELETE CASCADE,
+    PRIMARY KEY (student_id)
+);
+
 INSERT INTO students (student_id, name, fin, age) VALUES ('001415473', 'Jared', 'Bauer', '24');
 INSERT INTO students (student_id, name, fin, age) VALUES ('001420596', 'Alec', 'Bauer', '26');
 INSERT INTO students (student_id, name, fin, age) VALUES ('001413956', 'Daniel', 'Currie', '23');
@@ -59,7 +66,39 @@ INSERT INTO students (student_id, name, fin, age) VALUES ('435865435', 'Antony',
 INSERT INTO students (student_id, name, fin, age) VALUES ('236473263', 'Rubie', 'Smith', '20');
 INSERT INTO students (student_id, name, fin, age) VALUES ('236784326', 'Tony', 'Hayes', '20');
 
-
+INSERT INTO grades (gpa, student_id) VALUES ('86', '001415473');
+INSERT INTO grades (gpa, student_id) VALUES ('64', '001420596');
+INSERT INTO grades (gpa, student_id) VALUES ('45', '001413956');
+INSERT INTO grades (gpa, student_id) VALUES ('90', '743940289');
+INSERT INTO grades (gpa, student_id) VALUES ('95', '173628475');
+INSERT INTO grades (gpa, student_id) VALUES ('65', '019474638');
+INSERT INTO grades (gpa, student_id) VALUES ('56', '373628940');
+INSERT INTO grades (gpa, student_id) VALUES ('87', '235254264');
+INSERT INTO grades (gpa, student_id) VALUES ('75', '765854333');
+INSERT INTO grades (gpa, student_id) VALUES ('57', '745654637');
+INSERT INTO grades (gpa, student_id) VALUES ('97', '253456477');
+INSERT INTO grades (gpa, student_id) VALUES ('69', '985746375');
+INSERT INTO grades (gpa, student_id) VALUES ('62', '465685684');
+INSERT INTO grades (gpa, student_id) VALUES ('71', '347854378');
+INSERT INTO grades (gpa, student_id) VALUES ('54', '156782562');
+INSERT INTO grades (gpa, student_id) VALUES ('68', '684367532');
+INSERT INTO grades (gpa, student_id) VALUES ('51', '127745625');
+INSERT INTO grades (gpa, student_id) VALUES ('88', '243726432');
+INSERT INTO grades (gpa, student_id) VALUES ('50', '167321564');
+INSERT INTO grades (gpa, student_id) VALUES ('76', '123625673');
+INSERT INTO grades (gpa, student_id) VALUES ('66', '135647815');
+INSERT INTO grades (gpa, student_id) VALUES ('78', '126437354');
+INSERT INTO grades (gpa, student_id) VALUES ('80', '156754326');
+INSERT INTO grades (gpa, student_id) VALUES ('42', '152364753');
+INSERT INTO grades (gpa, student_id) VALUES ('55', '123647585');
+INSERT INTO grades (gpa, student_id) VALUES ('81', '765843573');
+INSERT INTO grades (gpa, student_id) VALUES ('83', '864535647');
+INSERT INTO grades (gpa, student_id) VALUES ('86', '243785674');
+INSERT INTO grades (gpa, student_id) VALUES ('87', '243758654');
+INSERT INTO grades (gpa, student_id) VALUES ('88', '768574637');
+INSERT INTO grades (gpa, student_id) VALUES ('53', '435865435');
+INSERT INTO grades (gpa, student_id) VALUES ('77', '236473263');
+INSERT INTO grades (gpa, student_id) VALUES ('59', '236784326');
 
 INSERT INTO departments (dept_no, dept_name) VALUES ('101', 'Software Engineering');
 INSERT INTO departments (dept_no, dept_name) VALUES ('121', 'Computer Science');

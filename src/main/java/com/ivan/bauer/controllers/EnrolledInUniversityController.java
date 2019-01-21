@@ -1,6 +1,7 @@
 package com.ivan.bauer.controllers;
 
 import com.ivan.bauer.model.Student;
+import com.ivan.bauer.model.StudentWithGrade;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +15,7 @@ public class EnrolledInUniversityController {
 
     @RequestMapping(method = RequestMethod.GET, value="/university/records")
     @ResponseBody
-    public ArrayList<Student> getStudents() {
+    public ArrayList<StudentWithGrade> getStudents() {
 
         EnrolledInUniversity enrolled = new EnrolledInUniversity();
         return enrolled.getStudents();
@@ -23,7 +24,7 @@ public class EnrolledInUniversityController {
 
     @RequestMapping(method = RequestMethod.GET, value="/university/records/{dept}")
     @ResponseBody
-    public ArrayList<Student> getStudentsDept(@PathVariable("dept") String dept) {
+    public ArrayList<StudentWithGrade> getStudentsDept(@PathVariable("dept") String dept) {
 
         EnrolledInUniversity enrolled = new EnrolledInUniversity();
         return enrolled.getStudentsDept(dept);
