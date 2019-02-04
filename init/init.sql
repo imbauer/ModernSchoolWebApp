@@ -26,28 +26,28 @@ CREATE TABLE department_enrollment (
 );
 
 CREATE TABLE grades (
-    gpa varchar(50) NOT NULL,
-    student_id varchar(50) NOT NULL,
+    gpa varchar(70) NOT NULL,
+    student_id varchar(70) NOT NULL,
     FOREIGN KEY (student_id) REFERENCES students (student_id) ON DELETE CASCADE,
     PRIMARY KEY (student_id)
 );
 
 CREATE TABLE users(
-   username varchar(20) NOT NULL,
-   password varchar(20) NOT NULL,
+   username varchar(70) NOT NULL,
+   password varchar(70) NOT NULL,
    enabled boolean NOT NULL DEFAULT FALSE,
    primary key(username)
 );
 
 create table user_roles (
    user_role_id SERIAL PRIMARY KEY,
-   username varchar(20) NOT NULL,
-   role varchar(20) NOT NULL,
+   username varchar(50) NOT NULL,
+   role varchar(50) NOT NULL,
    UNIQUE (username,role),
    FOREIGN KEY (username) REFERENCES users (username)
  );
 
-INSERT INTO users(username,password,enabled) VALUES ('jack','jack', true);
+INSERT INTO users(username,password,enabled) VALUES ('jack','$2a$10$pVSxFghBkSUA5qnN0oBAOOuyiRWA9CgYqL53BSTw/z9hUzhKbmo2W', true);
 INSERT INTO users(username,password,enabled) VALUES ('peter','peter', true);
 
 INSERT INTO user_roles (username, role) VALUES ('jack', 'ROLE_USER');
