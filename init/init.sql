@@ -32,6 +32,32 @@ CREATE TABLE grades (
     PRIMARY KEY (student_id)
 );
 
+CREATE TABLE users(
+   username varchar(20) NOT NULL,
+   password varchar(20) NOT NULL,
+   enabled boolean NOT NULL DEFAULT FALSE,
+   primary key(username)
+);
+
+create table user_roles (
+   user_role_id SERIAL PRIMARY KEY,
+   username varchar(20) NOT NULL,
+   role varchar(20) NOT NULL,
+   UNIQUE (username,role),
+   FOREIGN KEY (username) REFERENCES users (username)
+ );
+
+INSERT INTO users(username,password,enabled) VALUES ('jack','jack', true);
+INSERT INTO users(username,password,enabled) VALUES ('peter','peter', true);
+
+INSERT INTO user_roles (username, role) VALUES ('jack', 'ROLE_USER');
+INSERT INTO user_roles (username, role) VALUES ('jack', 'ROLE_ADMIN');
+INSERT INTO user_roles (username, role) VALUES ('peter', 'ROLE_USER');
+
+
+
+
+
 INSERT INTO students (student_id, name, fin, age) VALUES ('001415473', 'Jared', 'Bauer', '24');
 INSERT INTO students (student_id, name, fin, age) VALUES ('001420596', 'Alec', 'Bauer', '26');
 INSERT INTO students (student_id, name, fin, age) VALUES ('001413956', 'Daniel', 'Currie', '23');
