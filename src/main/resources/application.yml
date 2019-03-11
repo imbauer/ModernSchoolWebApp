@@ -23,4 +23,4 @@ spring:
       base-path: /api
 
 server:
-  port: 8083
+  port: 8080

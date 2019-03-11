@@ -99,7 +99,7 @@
              this.state={items:[]};
       }
       componentDidMount(){
-        fetch("http://192.168.99.100:8083/university/records")
+        fetch("http://192.168.99.100:8080/university/records")
             .then(result=>result.json())
         .then(items=>this.setState({items}))
       }

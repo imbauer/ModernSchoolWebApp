@@ -15,12 +15,15 @@ public class EnrolledInUniversity {
     static PostgreSQLdatabase conn = new PostgreSQLdatabase();
     static Connection connection = conn.postgreSQLConnection();
 
-    public ArrayList<StudentWithGrade> getStudents() {
+    public ArrayList<StudentWithGrade> getStudents(String count) {
+        int cnt = Integer.parseInt(count);
+
 
         String strSelect = "SELECT students.student_id, students.name, students.fin, students.age, grades.gpa " +
                 "FROM postgres.records.students " +
                 "JOIN postgres.records.grades grades " +
-                "ON grades.student_id = students.student_id";
+                "ON grades.student_id = students.student_id " +
+                "ORDER BY students.student_id LIMIT " + 10 + " OFFSET " + (cnt-1)*10;
 
         ArrayList<StudentWithGrade> students = new ArrayList<>();
 
@@ -50,8 +53,8 @@ public class EnrolledInUniversity {
 
 
 
-    public static ArrayList<StudentWithGrade> getStudentsDept(String dept) {
-
+    public static ArrayList<StudentWithGrade> getStudentsDept(String count, String dept) {
+        int cnt = Integer.parseInt(count);
         String strSelect = "SELECT students.student_id, students.name, students.fin, students.age, grades.gpa " +
                 "FROM postgres.records.students students " +
                 "JOIN postgres.records.department_enrollment department_enrollment " +
@@ -60,7 +63,8 @@ public class EnrolledInUniversity {
                 "ON departments.dept_no = department_enrollment.dept_no " +
                 "JOIN postgres.records.grades grades " +
                 "ON grades.student_id = students.student_id " +
-                "WHERE departments.dept_name = " + "'" + dept + "'";
+                "WHERE departments.dept_name = " + "'" + dept + "' " +
+                "ORDER BY students.student_id LIMIT " + 10 + " OFFSET " + (cnt-1)*10;
 
         ArrayList<StudentWithGrade> students = new ArrayList<>();
 
@@ -87,5 +91,6 @@ public class EnrolledInUniversity {
 
         return null;
     }
+
 
 }

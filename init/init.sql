@@ -48,10 +48,14 @@ create table user_roles (
  );
 
 INSERT INTO users(username,password,enabled) VALUES ('jack','$2a$10$pVSxFghBkSUA5qnN0oBAOOuyiRWA9CgYqL53BSTw/z9hUzhKbmo2W', true);
+INSERT INTO users(username,password,enabled) VALUES ('jan','$2y$10$eDVhJEL8L2w0lUuhFP5YOuw1oDf5cg/XTIiOABm9YIdwDC.e5fNkq', true);
+
 INSERT INTO users(username,password,enabled) VALUES ('peter','peter', true);
 
 INSERT INTO user_roles (username, role) VALUES ('jack', 'ROLE_USER');
 INSERT INTO user_roles (username, role) VALUES ('jack', 'ROLE_ADMIN');
+INSERT INTO user_roles (username, role) VALUES ('jan', 'ROLE_USER');
+INSERT INTO user_roles (username, role) VALUES ('jan', 'ROLE_ADMIN');
 INSERT INTO user_roles (username, role) VALUES ('peter', 'ROLE_USER');
 
 

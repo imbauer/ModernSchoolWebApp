@@ -91,9 +91,14 @@
         </div>
 
     </div>
+    <form>
+        <input type="button" onclick="display()" value="Next &raquo;" />
+    </form>
 
     <div id = "boldStuff">&nbsp;</div>
     <div>
+        <div id = "page" style = "display:none;">&nbsp;</div>
+        <div>
 
     </div>
 
@@ -102,21 +107,37 @@
 
     <script>
 
+        function display() {
+            if (document.getElementById('page').innerHTML === "&nbsp;") {
+                document.getElementById('page').innerHTML = 1;
+            }
+            document.getElementById('page').innerHTML = parseInt(document.getElementById('page').innerHTML) + 1;
+            alert(document.getElementById('page').innerHTML);
+        }
+
         var allStudents = async () => {
 
+            if (document.getElementById('page').innerHTML === "&nbsp;") {
+                document.getElementById('page').innerHTML = 1;
+            }
+
             if (document.getElementById("departmentID").value === "") {
-                var response = await fetch("/university/records");
+                var response = await fetch("/university/records/" + document.getElementById('page').innerHTML);
             }
             else {
-                var response = await fetch("/university/records/" + document.getElementById("departmentID").value);
+                var response = await fetch("/university/records/" + document.getElementById('page').innerHTML
+                + "/" + document.getElementById("departmentID").value);
             }
             var myJson = await response.json(); //extract JSON from the http response
+
+
+
 
             console.log(myJson);
             document.getElementById('boldStuff').innerHTML = '<p>' + myJson[0] + '</p>';
             var htmlString = '<table class="table table-dark"><thead>    <tr>      <th scope="col">#</th>      <th scope="col">Student ID</th>      <th scope="col">First</th>      <th scope="col">Last</th>  <th scope="col">Age</th>  <th scope="col">GPA / 100</th></tr>  </thead>  <tbody>';
             for (var i = 0; i < myJson.length; i++) {
-                htmlString = htmlString + '<tr><th scope="row">' + (i+1) + '</th><td>' + myJson[i].student_id +'</td><td>' + myJson[i].name + '</td><td>' + myJson[i].fin + '</td><td>' + myJson[i].age + '</td><td>' + myJson[i].gpa + '</td></tr>';
+                htmlString = htmlString + '<tr><th scope="row">' + (i+1+((parseInt(document.getElementById('page').innerHTML)-1)*10)) + '</th><td>' + myJson[i].student_id +'</td><td>' + myJson[i].name + '</td><td>' + myJson[i].fin + '</td><td>' + myJson[i].age + '</td><td>' + myJson[i].gpa + '</td></tr>';
             }
             htmlString = htmlString + '</tbody></table>';
             console.log(htmlString);

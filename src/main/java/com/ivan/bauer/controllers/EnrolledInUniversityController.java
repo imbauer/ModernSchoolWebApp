@@ -13,21 +13,21 @@ import java.util.ArrayList;
 @EnableAutoConfiguration
 public class EnrolledInUniversityController {
 
-    @RequestMapping(method = RequestMethod.GET, value="/university/records")
+    @RequestMapping(method = RequestMethod.GET, value="/university/records/{count}")
     @ResponseBody
-    public ArrayList<StudentWithGrade> getStudents() {
+    public ArrayList<StudentWithGrade> getStudents(@PathVariable("count") String count) {
 
         EnrolledInUniversity enrolled = new EnrolledInUniversity();
-        return enrolled.getStudents();
+        return enrolled.getStudents(count);
 
     }
 
-    @RequestMapping(method = RequestMethod.GET, value="/university/records/{dept}")
+    @RequestMapping(method = RequestMethod.GET, value="/university/records/{count}/{dept}")
     @ResponseBody
-    public ArrayList<StudentWithGrade> getStudentsDept(@PathVariable("dept") String dept) {
+    public ArrayList<StudentWithGrade> getStudentsDept(@PathVariable("count") String count, @PathVariable("dept") String dept) {
 
         EnrolledInUniversity enrolled = new EnrolledInUniversity();
-        return enrolled.getStudentsDept(dept);
+        return enrolled.getStudentsDept(count, dept);
 
     }
 

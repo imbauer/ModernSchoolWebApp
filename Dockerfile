@@ -6,7 +6,7 @@ RUN mvn clean install -U
 WORKDIR /usr/src/java-app
 RUN cp /usr/src/java-code/target/*.jar ./app.jar
 
-EXPOSE 8083
+EXPOSE 8080
 #CMD ["java", "-jar", "app.jar"]
 #CMD ["java", "-Doracle.net.tns_admin=${TNS_ADMIN}", "-Duser.timezone=GMT", "-jar", "app.jar"]
 
